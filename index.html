@@ -7,7 +7,8 @@
     <meta name="description" content="Partwigo Labs builds AI-powered products for India — SevaSangam for small businesses and LawCentral AI for legal professionals.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --paper: #FBF9F5;
@@ -18,6 +19,7 @@
             --line: #E5DFD2;
             --accent: #C05621;
             --accent-deep: #9C4318;
+            --accent-glow: #E8955C;
             --seva: #B4520A;
             --seva-wash: #FBEEDF;
             --law: #34506B;
@@ -37,242 +39,307 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        .serif { font-family: 'Fraunces', Georgia, serif; }
+        ::selection { background: var(--accent); color: #fff; }
 
-        .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+        .wrap { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
 
         /* ---------- Nav ---------- */
         nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            background: rgba(251, 249, 245, 0.88);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--line);
+            transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+            border-bottom: 1px solid transparent;
         }
         .nav-inner {
-            max-width: 1120px; margin: 0 auto; padding: 18px 24px;
+            max-width: 1160px; margin: 0 auto; padding: 20px 28px;
             display: flex; justify-content: space-between; align-items: center;
         }
         .logo {
-            display: flex; align-items: center; gap: 10px;
-            text-decoration: none; color: var(--ink);
+            display: flex; align-items: center; gap: 11px;
+            text-decoration: none;
             font-family: 'Fraunces', Georgia, serif;
-            font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em;
+            font-size: 1.3rem; font-weight: 600; letter-spacing: -0.01em;
+            color: #fff; transition: color 0.35s ease;
         }
         .logo-mark {
-            width: 34px; height: 34px; border-radius: 9px;
-            background: var(--ink); color: var(--paper);
+            width: 36px; height: 36px; border-radius: 10px;
+            background: #fff; color: var(--ink);
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.05rem; font-weight: 600;
+            font-size: 1.1rem; font-weight: 600;
+            transition: background 0.35s ease, color 0.35s ease;
         }
-        .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
+        .nav-links { display: flex; gap: 34px; list-style: none; align-items: center; }
         .nav-links a {
-            color: var(--ink-soft); text-decoration: none;
-            font-size: 0.92rem; font-weight: 500;
-            transition: color 0.2s;
+            color: rgba(255,255,255,0.85); text-decoration: none;
+            font-size: 0.93rem; font-weight: 500;
+            transition: color 0.25s;
         }
-        .nav-links a:hover { color: var(--ink); }
+        .nav-links a:hover { color: #fff; }
         .nav-cta {
-            background: var(--ink); color: var(--paper) !important;
-            padding: 9px 18px; border-radius: 999px;
-            transition: background 0.2s;
+            background: rgba(255,255,255,0.14); color: #fff !important;
+            border: 1px solid rgba(255,255,255,0.35);
+            padding: 10px 20px; border-radius: 999px;
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            transition: background 0.25s, border-color 0.25s;
         }
-        .nav-cta:hover { background: var(--accent-deep); }
+        .nav-cta:hover { background: rgba(255,255,255,0.26); }
+
+        nav.solid {
+            background: rgba(251, 249, 245, 0.92);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border-bottom-color: var(--line);
+        }
+        nav.solid .logo { color: var(--ink); }
+        nav.solid .logo-mark { background: var(--ink); color: var(--paper); }
+        nav.solid .nav-links a { color: var(--ink-soft); }
+        nav.solid .nav-links a:hover { color: var(--ink); }
+        nav.solid .nav-cta {
+            background: var(--ink); color: var(--paper) !important;
+            border-color: var(--ink);
+        }
+        nav.solid .nav-cta:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
 
         /* ---------- Hero ---------- */
         .hero {
-            padding: 172px 0 96px;
-            border-bottom: 1px solid var(--line);
+            position: relative;
+            min-height: 100svh;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            color: #fff;
+            isolation: isolate;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0; z-index: -2;
+            background-image: url('https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=2400&q=80');
+            background-size: cover;
+            background-position: center 30%;
+        }
+        .hero-scrim {
+            position: absolute; inset: 0; z-index: -1;
+            background:
+                linear-gradient(to top, rgba(14, 9, 5, 0.92) 0%, rgba(14, 9, 5, 0.55) 38%, rgba(14, 9, 5, 0.18) 65%, rgba(14, 9, 5, 0.38) 100%);
+        }
+        .hero-content {
+            width: 100%;
+            padding: 0 0 64px;
         }
         .eyebrow {
-            display: inline-flex; align-items: center; gap: 8px;
-            font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em;
-            text-transform: uppercase; color: var(--accent);
-            margin-bottom: 26px;
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 0.78rem; font-weight: 600; letter-spacing: 0.16em;
+            text-transform: uppercase; color: var(--accent-glow);
+            margin-bottom: 24px;
         }
-        .eyebrow::before {
-            content: ''; width: 26px; height: 1.5px; background: var(--accent);
-        }
+        .eyebrow::before { content: ''; width: 28px; height: 1.5px; background: var(--accent-glow); }
         .hero h1 {
             font-family: 'Fraunces', Georgia, serif;
-            font-size: clamp(2.6rem, 6.4vw, 4.6rem);
-            font-weight: 500; line-height: 1.06; letter-spacing: -0.02em;
-            max-width: 15ch;
-            margin-bottom: 28px;
+            font-size: clamp(2.7rem, 6.6vw, 5.2rem);
+            font-weight: 500; line-height: 1.04; letter-spacing: -0.022em;
+            max-width: 16ch;
+            margin-bottom: 26px;
+            text-wrap: balance;
         }
-        .hero h1 em {
-            font-style: italic; color: var(--accent);
-        }
+        .hero h1 em { font-style: italic; color: var(--accent-glow); }
         .hero-sub {
-            font-size: 1.16rem; color: var(--ink-soft);
-            max-width: 54ch; margin-bottom: 40px;
+            font-size: 1.13rem; color: rgba(255,255,255,0.82);
+            max-width: 56ch; margin-bottom: 38px;
+            text-wrap: pretty;
         }
         .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
         .btn {
             display: inline-flex; align-items: center; gap: 9px;
-            padding: 14px 26px; border-radius: 999px;
+            padding: 15px 28px; border-radius: 999px;
             font-size: 0.97rem; font-weight: 600; text-decoration: none;
-            transition: transform 0.2s, background 0.2s, border-color 0.2s, color 0.2s;
+            transition: transform 0.2s, background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
         }
         .btn svg { transition: transform 0.2s; }
         .btn:hover svg { transform: translateX(3px); }
+        .btn-light { background: #fff; color: var(--ink); }
+        .btn-light:hover { transform: translateY(-2px); box-shadow: 0 12px 30px -10px rgba(0,0,0,0.5); }
+        .btn-outline {
+            background: rgba(255,255,255,0.08); color: #fff;
+            border: 1.5px solid rgba(255,255,255,0.45);
+            backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+        }
+        .btn-outline:hover { background: rgba(255,255,255,0.18); transform: translateY(-2px); }
         .btn-dark { background: var(--ink); color: var(--paper); }
         .btn-dark:hover { background: var(--accent-deep); transform: translateY(-1px); }
-        .btn-ghost {
-            background: transparent; color: var(--ink);
-            border: 1.5px solid var(--line);
-        }
-        .btn-ghost:hover { border-color: var(--ink); transform: translateY(-1px); }
 
-        .hero-meta {
-            display: flex; gap: 44px; flex-wrap: wrap;
-            margin-top: 72px; padding-top: 34px;
-            border-top: 1px solid var(--line);
+        .hero-stats {
+            display: flex; gap: 0; flex-wrap: wrap;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255,255,255,0.22);
         }
-        .hero-meta div strong {
+        .hero-stats div {
+            padding: 26px 44px 0 0; margin-right: 44px;
+        }
+        .hero-stats strong {
             display: block;
             font-family: 'Fraunces', Georgia, serif;
-            font-size: 1.7rem; font-weight: 600; letter-spacing: -0.01em;
+            font-size: 1.9rem; font-weight: 500; letter-spacing: -0.01em;
+            color: #fff;
         }
-        .hero-meta div span { font-size: 0.86rem; color: var(--ink-faint); }
+        .hero-stats span { font-size: 0.84rem; color: rgba(255,255,255,0.62); }
+
+        .hero-credit {
+            position: absolute; right: 20px; bottom: 14px;
+            font-size: 0.68rem; color: rgba(255,255,255,0.4);
+            z-index: 1;
+        }
+        .hero-credit a { color: rgba(255,255,255,0.55); text-decoration: none; }
+
+        /* ---------- Marquee strip ---------- */
+        .strip {
+            background: var(--ink); color: var(--paper);
+            overflow: hidden; white-space: nowrap;
+            padding: 15px 0;
+            border-bottom: 1px solid #2A251C;
+        }
+        .strip-track {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+        }
+        .strip span {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 0.95rem; font-style: italic;
+            color: #B8AF9D;
+            margin: 0 28px;
+        }
+        .strip span b { color: var(--accent-glow); font-weight: 500; }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .strip-track { animation: none; }
+        }
 
         /* ---------- Section scaffolding ---------- */
-        section { padding: 96px 0; }
-        .section-head { max-width: 620px; margin-bottom: 60px; }
-        .section-head h2 {
+        section { padding: 108px 0; }
+        .section-head { max-width: 640px; margin-bottom: 64px; }
+        .section-head .eyebrow { color: var(--accent); }
+        .section-head .eyebrow::before { background: var(--accent); }
+        .section-head h2, .about-grid h2 {
             font-family: 'Fraunces', Georgia, serif;
-            font-size: clamp(1.9rem, 3.6vw, 2.7rem);
-            font-weight: 500; letter-spacing: -0.015em; line-height: 1.15;
-            margin: 14px 0 16px;
+            font-size: clamp(2rem, 3.8vw, 2.9rem);
+            font-weight: 500; letter-spacing: -0.018em; line-height: 1.12;
+            margin: 4px 0 18px;
+            text-wrap: balance;
         }
-        .section-head p { color: var(--ink-soft); font-size: 1.05rem; }
+        .section-head p { color: var(--ink-soft); font-size: 1.06rem; }
 
         /* ---------- Products ---------- */
         .products { border-bottom: 1px solid var(--line); }
         .product {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+            display: grid; grid-template-columns: 1fr 1fr;
             border: 1px solid var(--line); border-radius: var(--radius);
             overflow: hidden; background: #fff;
-            margin-bottom: 36px;
-            transition: box-shadow 0.3s, transform 0.3s;
+            margin-bottom: 40px;
+            transition: box-shadow 0.35s, transform 0.35s;
         }
         .product:hover {
-            box-shadow: 0 24px 60px -24px rgba(22, 19, 14, 0.18);
-            transform: translateY(-3px);
+            box-shadow: 0 30px 70px -28px rgba(22, 19, 14, 0.22);
+            transform: translateY(-4px);
         }
-        .product-body { padding: 52px 48px; }
+        .product-body { padding: 56px 52px; }
         .product-visual {
             display: flex; align-items: center; justify-content: center;
             padding: 48px; position: relative; overflow: hidden;
         }
-        .product.seva .product-visual { background: var(--seva-wash); }
-        .product.law .product-visual { background: var(--law-wash); }
+        .product.seva .product-visual { background: linear-gradient(160deg, #FBEEDF, #F6DFC4); }
+        .product.law .product-visual { background: linear-gradient(160deg, #E9EFF5, #D8E2EC); }
 
         .product-tag {
-            display: inline-block; font-size: 0.74rem; font-weight: 700;
-            letter-spacing: 0.12em; text-transform: uppercase;
-            padding: 6px 12px; border-radius: 999px; margin-bottom: 20px;
+            display: inline-block; font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.13em; text-transform: uppercase;
+            padding: 7px 13px; border-radius: 999px; margin-bottom: 22px;
         }
         .product.seva .product-tag { background: var(--seva-wash); color: var(--seva); }
         .product.law .product-tag { background: var(--law-wash); color: var(--law); }
 
         .product h3 {
             font-family: 'Fraunces', Georgia, serif;
-            font-size: 2rem; font-weight: 600; letter-spacing: -0.015em;
+            font-size: 2.15rem; font-weight: 600; letter-spacing: -0.017em;
             margin-bottom: 6px;
         }
-        .product .domain {
-            font-size: 0.9rem; font-weight: 600; margin-bottom: 18px;
-        }
+        .product .domain { font-size: 0.9rem; font-weight: 600; margin-bottom: 18px; }
         .product.seva .domain { color: var(--seva); }
         .product.law .domain { color: var(--law); }
-        .product > .product-body > p.desc {
-            color: var(--ink-soft); margin-bottom: 24px; line-height: 1.7;
-        }
-        .feature-list { list-style: none; margin-bottom: 30px; }
+        .product p.desc { color: var(--ink-soft); margin-bottom: 26px; line-height: 1.72; }
+        .feature-list { list-style: none; margin-bottom: 32px; }
         .feature-list li {
             padding: 7px 0; color: var(--ink-soft); font-size: 0.95rem;
             display: flex; gap: 12px; align-items: baseline;
         }
-        .feature-list li::before {
-            content: '—'; font-weight: 600; flex-shrink: 0;
-        }
+        .feature-list li::before { content: '—'; font-weight: 600; flex-shrink: 0; }
         .product.seva .feature-list li::before { color: var(--seva); }
         .product.law .feature-list li::before { color: var(--law); }
 
         .product-link {
             display: inline-flex; align-items: center; gap: 8px;
             font-weight: 600; font-size: 0.97rem; text-decoration: none;
-            padding: 12px 22px; border-radius: 999px;
-            transition: transform 0.2s, opacity 0.2s;
+            padding: 13px 24px; border-radius: 999px;
+            transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
             color: #fff;
         }
         .product.seva .product-link { background: var(--seva); }
         .product.law .product-link { background: var(--law); }
-        .product-link:hover { transform: translateY(-1px); opacity: 0.92; }
+        .product-link:hover { transform: translateY(-2px); opacity: 0.93; box-shadow: 0 12px 26px -12px rgba(22,19,14,0.45); }
         .product-link svg { transition: transform 0.2s; }
         .product-link:hover svg { transform: translateX(3px); }
 
-        /* product visual cards */
         .mini-card {
-            background: #fff; border-radius: 16px;
-            box-shadow: 0 18px 44px -18px rgba(22, 19, 14, 0.22);
-            padding: 22px 24px; width: min(320px, 100%);
+            background: #fff; border-radius: 18px;
+            box-shadow: 0 24px 54px -20px rgba(22, 19, 14, 0.28);
+            padding: 24px 26px; width: min(330px, 100%);
+            position: relative; z-index: 1;
         }
         .mini-card .mc-row {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 9px 0; border-bottom: 1px solid #F0EBE1;
+            gap: 14px;
+            padding: 10px 0; border-bottom: 1px solid #F0EBE1;
             font-size: 0.86rem;
         }
         .mini-card .mc-row:last-child { border-bottom: none; }
-        .mini-card .mc-row .ok { font-weight: 700; }
+        .mini-card .mc-row .ok { font-weight: 700; white-space: nowrap; }
         .product.seva .mc-row .ok { color: var(--seva); }
         .product.law .mc-row .ok { color: var(--law); }
         .mini-card .mc-title {
-            font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
-            text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px;
+            font-size: 0.73rem; font-weight: 700; letter-spacing: 0.11em;
+            text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px;
         }
         .glyph {
             position: absolute; font-family: 'Fraunces', Georgia, serif;
-            font-size: 15rem; line-height: 1; opacity: 0.07; user-select: none;
-            right: -28px; bottom: -46px; pointer-events: none;
+            font-size: 16rem; line-height: 1; opacity: 0.08; user-select: none;
+            right: -30px; bottom: -52px; pointer-events: none;
         }
 
         /* ---------- Principles ---------- */
         .principles { border-bottom: 1px solid var(--line); background: var(--paper-deep); }
-        .principles-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
-        }
+        .principles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
         .principle {
             background: #fff; border: 1px solid var(--line);
-            border-radius: var(--radius); padding: 34px 30px;
+            border-radius: var(--radius); padding: 38px 32px;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
+        .principle:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -20px rgba(22,19,14,0.18); }
         .principle .num {
             font-family: 'Fraunces', Georgia, serif;
             font-size: 0.95rem; font-weight: 600; color: var(--accent);
-            margin-bottom: 16px; display: block;
+            margin-bottom: 18px; display: block;
         }
         .principle h3 {
             font-family: 'Fraunces', Georgia, serif;
-            font-size: 1.25rem; font-weight: 600; margin-bottom: 10px;
+            font-size: 1.3rem; font-weight: 600; margin-bottom: 10px;
+            letter-spacing: -0.01em;
         }
         .principle p { color: var(--ink-soft); font-size: 0.94rem; }
 
         /* ---------- About ---------- */
-        .about-grid {
-            display: grid; grid-template-columns: 5fr 4fr; gap: 72px; align-items: start;
-        }
-        .about-grid h2 {
-            font-family: 'Fraunces', Georgia, serif;
-            font-size: clamp(1.9rem, 3.6vw, 2.7rem);
-            font-weight: 500; letter-spacing: -0.015em; line-height: 1.15;
-            margin: 14px 0 22px;
-        }
-        .about-grid .lede { font-size: 1.08rem; color: var(--ink-soft); margin-bottom: 18px; line-height: 1.75; }
+        .about-grid { display: grid; grid-template-columns: 5fr 4fr; gap: 76px; align-items: start; }
+        .about-grid .lede { font-size: 1.08rem; color: var(--ink-soft); margin-bottom: 18px; line-height: 1.78; }
         .about-facts { display: grid; gap: 18px; }
         .fact {
             border: 1px solid var(--line); border-radius: 16px;
-            padding: 24px 26px; background: #fff;
+            padding: 26px 28px; background: #fff;
         }
         .fact strong {
             display: block; font-family: 'Fraunces', Georgia, serif;
@@ -282,29 +349,36 @@
 
         /* ---------- Contact ---------- */
         .contact-band {
+            position: relative;
             background: var(--ink); color: var(--paper);
-            border-radius: calc(var(--radius) + 6px);
-            padding: 72px 56px; text-align: center;
+            border-radius: calc(var(--radius) + 8px);
+            padding: 84px 56px; text-align: center;
+            overflow: hidden; isolation: isolate;
+        }
+        .contact-band::before {
+            content: '';
+            position: absolute; inset: 0; z-index: -1;
+            background: radial-gradient(ellipse 70% 90% at 50% 110%, rgba(192, 86, 33, 0.4), transparent 70%);
         }
         .contact-band h2 {
             font-family: 'Fraunces', Georgia, serif;
-            font-size: clamp(1.9rem, 3.8vw, 2.8rem);
-            font-weight: 500; letter-spacing: -0.015em;
-            margin-bottom: 16px;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 500; letter-spacing: -0.018em;
+            margin-bottom: 16px; text-wrap: balance;
         }
-        .contact-band h2 em { font-style: italic; color: #E8955C; }
-        .contact-band p {
-            color: #B8AF9D; max-width: 46ch; margin: 0 auto 34px;
-        }
+        .contact-band h2 em { font-style: italic; color: var(--accent-glow); }
+        .contact-band p { color: #B8AF9D; max-width: 46ch; margin: 0 auto 36px; }
         .btn-paper { background: var(--paper); color: var(--ink); }
-        .btn-paper:hover { background: #fff; transform: translateY(-1px); }
+        .btn-paper:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 14px 34px -14px rgba(0,0,0,0.6); }
 
         /* ---------- Footer ---------- */
-        footer { padding: 52px 0 44px; }
+        footer { padding: 56px 0 46px; }
         .footer-inner {
             display: flex; justify-content: space-between; align-items: center;
             gap: 24px; flex-wrap: wrap;
         }
+        footer .logo { color: var(--ink); }
+        footer .logo-mark { background: var(--ink); color: var(--paper); }
         .footer-links { display: flex; gap: 26px; list-style: none; flex-wrap: wrap; }
         .footer-links a {
             color: var(--ink-faint); text-decoration: none; font-size: 0.9rem;
@@ -314,7 +388,7 @@
         .copyright { color: var(--ink-faint); font-size: 0.85rem; }
 
         /* ---------- Reveal ---------- */
-        .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.75s ease, transform 0.75s ease; }
         .reveal.in { opacity: 1; transform: none; }
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
@@ -324,23 +398,23 @@
         /* ---------- Responsive ---------- */
         @media (max-width: 900px) {
             .product { grid-template-columns: 1fr; }
-            .product-visual { min-height: 260px; order: -1; }
+            .product-visual { min-height: 280px; order: -1; }
             .principles-grid { grid-template-columns: 1fr; }
-            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-grid { grid-template-columns: 1fr; gap: 44px; }
         }
         @media (max-width: 640px) {
             .nav-links li:not(.keep) { display: none; }
-            .hero { padding: 140px 0 72px; }
-            section { padding: 72px 0; }
-            .product-body { padding: 36px 26px; }
-            .contact-band { padding: 52px 26px; }
-            .hero-meta { gap: 26px; }
+            section { padding: 76px 0; }
+            .product-body { padding: 38px 26px; }
+            .contact-band { padding: 56px 26px; }
+            .hero-stats div { padding-right: 0; margin-right: 30px; }
+            .hero-content { padding-bottom: 48px; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
+    <nav id="nav">
         <div class="nav-inner">
             <a href="#top" class="logo"><span class="logo-mark">P</span>Partwigo Labs</a>
             <ul class="nav-links">
@@ -354,25 +428,44 @@
 
     <!-- Hero -->
     <header class="hero" id="top">
-        <div class="wrap">
-            <span class="eyebrow">A product studio, Made in India</span>
-            <h1 class="serif">We build AI products for the people who <em>run India</em>.</h1>
-            <p class="hero-sub">Partwigo Labs designs and ships software for professionals the big platforms overlook — the shop owner sending her first GST invoice, the advocate preparing tomorrow's hearing. Serious tools, priced for real businesses, built for Indian languages, courts, and rails like UPI.</p>
-            <div class="hero-actions">
-                <a href="#products" class="btn btn-dark">
-                    See our products
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-                <a href="#about" class="btn btn-ghost">About the studio</a>
-            </div>
-            <div class="hero-meta">
-                <div><strong>2</strong><span>Products in market</span></div>
-                <div><strong>6+</strong><span>Indian languages supported</span></div>
-                <div><strong>0%</strong><span>Commission on customer orders</span></div>
-                <div><strong>🇮🇳</strong><span>Designed &amp; built in India</span></div>
+        <div class="hero-bg"></div>
+        <div class="hero-scrim"></div>
+        <div class="hero-content">
+            <div class="wrap">
+                <span class="eyebrow">A product studio · Made in India</span>
+                <h1>We build AI products for the people who <em>run India</em>.</h1>
+                <p class="hero-sub">Software for the professionals the big platforms overlook — the shop owner sending her first GST invoice, the advocate preparing tomorrow's hearing. Serious tools, priced for real businesses, built for Indian languages, courts, and rails like UPI.</p>
+                <div class="hero-actions">
+                    <a href="#products" class="btn btn-light">
+                        See our products
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#about" class="btn btn-outline">About the studio</a>
+                </div>
+                <div class="hero-stats">
+                    <div><strong>2</strong><span>Products in market</span></div>
+                    <div><strong>6+</strong><span>Indian languages</span></div>
+                    <div><strong>0%</strong><span>Commission on orders</span></div>
+                    <div><strong>🇮🇳</strong><span>Designed &amp; built in India</span></div>
+                </div>
             </div>
         </div>
+        <span class="hero-credit">Hawa Mahal, Jaipur · <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></span>
     </header>
+
+    <!-- Marquee strip -->
+    <div class="strip" aria-hidden="true">
+        <div class="strip-track">
+            <span><b>SevaSangam</b> — every job, every rupee, one app</span><span>·</span>
+            <span><b>LawCentral AI</b> — the AI workspace for Indian law</span><span>·</span>
+            <span>UPI · GST · 6 languages · 0% commission</span><span>·</span>
+            <span>AI that does the work, not just the demo</span><span>·</span>
+            <span><b>SevaSangam</b> — every job, every rupee, one app</span><span>·</span>
+            <span><b>LawCentral AI</b> — the AI workspace for Indian law</span><span>·</span>
+            <span>UPI · GST · 6 languages · 0% commission</span><span>·</span>
+            <span>AI that does the work, not just the demo</span><span>·</span>
+        </div>
+    </div>
 
     <!-- Products -->
     <section class="products" id="products">
@@ -479,7 +572,7 @@
         <div class="wrap">
             <div class="about-grid">
                 <div class="reveal">
-                    <span class="eyebrow">The studio</span>
+                    <span class="eyebrow" style="color: var(--accent);">The studio</span>
                     <h2>Small team. Sharp products. Long game.</h2>
                     <p class="lede">Partwigo Labs is a product studio of engineers and designers who believe the most interesting AI companies will be built for the hundreds of millions of professionals working outside Silicon Valley's field of view.</p>
                     <p class="lede">We build each product the same way: live inside the problem, ship fast, talk to users daily, and let AI carry the drudgery so people can do the work only they can do.</p>
@@ -521,6 +614,13 @@
     </footer>
 
     <script>
+        // Solid nav after leaving hero
+        const nav = document.getElementById('nav');
+        const onScroll = () => nav.classList.toggle('solid', window.scrollY > window.innerHeight * 0.72);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        // Scroll reveal
         const io = new IntersectionObserver((entries) => {
             entries.forEach(e => {
                 if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
