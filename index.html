@@ -3,589 +3,530 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Partwigo Labs - Building AI-Powered Solutions</title>
+    <title>Partwigo Labs — AI products for India</title>
+    <meta name="description" content="Partwigo Labs builds AI-powered products for India — SevaSangam for small businesses and LawCentral AI for legal professionals.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --paper: #FBF9F5;
+            --paper-deep: #F3EFE7;
+            --ink: #16130E;
+            --ink-soft: #57503F;
+            --ink-faint: #8A8271;
+            --line: #E5DFD2;
+            --accent: #C05621;
+            --accent-deep: #9C4318;
+            --seva: #B4520A;
+            --seva-wash: #FBEEDF;
+            --law: #34506B;
+            --law-wash: #E9EFF5;
+            --radius: 20px;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #ffffff;
-            color: #1a1a2e;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Navigation */
+        .serif { font-family: 'Fraunces', Georgia, serif; }
+
+        .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+        /* ---------- Nav ---------- */
         nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid #f0f0f0;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(251, 249, 245, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--line);
         }
-
+        .nav-inner {
+            max-width: 1120px; margin: 0 auto; padding: 18px 24px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #1a1a2e;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            display: flex; align-items: center; gap: 10px;
+            text-decoration: none; color: var(--ink);
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em;
         }
-
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 800;
-            font-size: 1.2rem;
+        .logo-mark {
+            width: 34px; height: 34px; border-radius: 9px;
+            background: var(--ink); color: var(--paper);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.05rem; font-weight: 600;
         }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
+        .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
         .nav-links a {
-            color: #64748b;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+            color: var(--ink-soft); text-decoration: none;
+            font-size: 0.92rem; font-weight: 500;
+            transition: color 0.2s;
         }
-
-        .nav-links a:hover {
-            color: #6366f1;
+        .nav-links a:hover { color: var(--ink); }
+        .nav-cta {
+            background: var(--ink); color: var(--paper) !important;
+            padding: 9px 18px; border-radius: 999px;
+            transition: background 0.2s;
         }
+        .nav-cta:hover { background: var(--accent-deep); }
 
-        /* Hero Section */
+        /* ---------- Hero ---------- */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 8rem 5% 4rem;
-            background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+            padding: 172px 0 96px;
+            border-bottom: 1px solid var(--line);
         }
-
-        .hero-badge {
-            background: linear-gradient(135deg, #ede9fe, #e0e7ff);
-            color: #6366f1;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
+        .eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--accent);
+            margin-bottom: 26px;
         }
-
+        .eyebrow::before {
+            content: ''; width: 26px; height: 1.5px; background: var(--accent);
+        }
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            max-width: 900px;
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(2.6rem, 6.4vw, 4.6rem);
+            font-weight: 500; line-height: 1.06; letter-spacing: -0.02em;
+            max-width: 15ch;
+            margin-bottom: 28px;
         }
-
-        .hero h1 span {
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero h1 em {
+            font-style: italic; color: var(--accent);
         }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: #64748b;
-            max-width: 600px;
-            margin-bottom: 3rem;
+        .hero-sub {
+            font-size: 1.16rem; color: var(--ink-soft);
+            max-width: 54ch; margin-bottom: 40px;
         }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
+        .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
         .btn {
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+            display: inline-flex; align-items: center; gap: 9px;
+            padding: 14px 26px; border-radius: 999px;
+            font-size: 0.97rem; font-weight: 600; text-decoration: none;
+            transition: transform 0.2s, background 0.2s, border-color 0.2s, color 0.2s;
         }
+        .btn svg { transition: transform 0.2s; }
+        .btn:hover svg { transform: translateX(3px); }
+        .btn-dark { background: var(--ink); color: var(--paper); }
+        .btn-dark:hover { background: var(--accent-deep); transform: translateY(-1px); }
+        .btn-ghost {
+            background: transparent; color: var(--ink);
+            border: 1.5px solid var(--line);
+        }
+        .btn-ghost:hover { border-color: var(--ink); transform: translateY(-1px); }
 
-        .btn-primary {
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        .hero-meta {
+            display: flex; gap: 44px; flex-wrap: wrap;
+            margin-top: 72px; padding-top: 34px;
+            border-top: 1px solid var(--line);
         }
+        .hero-meta div strong {
+            display: block;
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.7rem; font-weight: 600; letter-spacing: -0.01em;
+        }
+        .hero-meta div span { font-size: 0.86rem; color: var(--ink-faint); }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        /* ---------- Section scaffolding ---------- */
+        section { padding: 96px 0; }
+        .section-head { max-width: 620px; margin-bottom: 60px; }
+        .section-head h2 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+            font-weight: 500; letter-spacing: -0.015em; line-height: 1.15;
+            margin: 14px 0 16px;
         }
+        .section-head p { color: var(--ink-soft); font-size: 1.05rem; }
 
-        .btn-secondary {
-            background: white;
-            color: #1a1a2e;
-            border: 2px solid #e2e8f0;
+        /* ---------- Products ---------- */
+        .products { border-bottom: 1px solid var(--line); }
+        .product {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+            border: 1px solid var(--line); border-radius: var(--radius);
+            overflow: hidden; background: #fff;
+            margin-bottom: 36px;
+            transition: box-shadow 0.3s, transform 0.3s;
         }
+        .product:hover {
+            box-shadow: 0 24px 60px -24px rgba(22, 19, 14, 0.18);
+            transform: translateY(-3px);
+        }
+        .product-body { padding: 52px 48px; }
+        .product-visual {
+            display: flex; align-items: center; justify-content: center;
+            padding: 48px; position: relative; overflow: hidden;
+        }
+        .product.seva .product-visual { background: var(--seva-wash); }
+        .product.law .product-visual { background: var(--law-wash); }
 
-        .btn-secondary:hover {
-            border-color: #6366f1;
-            color: #6366f1;
+        .product-tag {
+            display: inline-block; font-size: 0.74rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            padding: 6px 12px; border-radius: 999px; margin-bottom: 20px;
         }
+        .product.seva .product-tag { background: var(--seva-wash); color: var(--seva); }
+        .product.law .product-tag { background: var(--law-wash); color: var(--law); }
 
-        /* Products Section */
-        .products {
-            padding: 6rem 5%;
-            background: #ffffff;
+        .product h3 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 2rem; font-weight: 600; letter-spacing: -0.015em;
+            margin-bottom: 6px;
         }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
+        .product .domain {
+            font-size: 0.9rem; font-weight: 600; margin-bottom: 18px;
         }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+        .product.seva .domain { color: var(--seva); }
+        .product.law .domain { color: var(--law); }
+        .product > .product-body > p.desc {
+            color: var(--ink-soft); margin-bottom: 24px; line-height: 1.7;
         }
-
-        .section-header p {
-            color: #64748b;
-            font-size: 1.125rem;
-            max-width: 600px;
-            margin: 0 auto;
+        .feature-list { list-style: none; margin-bottom: 30px; }
+        .feature-list li {
+            padding: 7px 0; color: var(--ink-soft); font-size: 0.95rem;
+            display: flex; gap: 12px; align-items: baseline;
         }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        .feature-list li::before {
+            content: '—'; font-weight: 600; flex-shrink: 0;
         }
-
-        .product-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 24px;
-            padding: 2.5rem;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            border-color: transparent;
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-        }
-
-        .product-card.scriptcentral {
-            --accent-color: #6366f1;
-            --accent-secondary: #8b5cf6;
-        }
-
-        .product-card.lawcentral {
-            --accent-color: #0ea5e9;
-            --accent-secondary: #06b6d4;
-        }
-
-        .product-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .scriptcentral .product-icon {
-            background: linear-gradient(135deg, #ede9fe, #e0e7ff);
-        }
-
-        .lawcentral .product-icon {
-            background: linear-gradient(135deg, #e0f2fe, #cffafe);
-        }
-
-        .product-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-        }
-
-        .product-card .tagline {
-            color: var(--accent-color);
-            font-weight: 600;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-        }
-
-        .product-card p {
-            color: #64748b;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .product-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .product-features li {
-            padding: 0.5rem 0;
-            color: #475569;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .product-features li::before {
-            content: '✓';
-            color: var(--accent-color);
-            font-weight: 700;
-        }
+        .product.seva .feature-list li::before { color: var(--seva); }
+        .product.law .feature-list li::before { color: var(--law); }
 
         .product-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: gap 0.3s;
+            display: inline-flex; align-items: center; gap: 8px;
+            font-weight: 600; font-size: 0.97rem; text-decoration: none;
+            padding: 12px 22px; border-radius: 999px;
+            transition: transform 0.2s, opacity 0.2s;
+            color: #fff;
+        }
+        .product.seva .product-link { background: var(--seva); }
+        .product.law .product-link { background: var(--law); }
+        .product-link:hover { transform: translateY(-1px); opacity: 0.92; }
+        .product-link svg { transition: transform 0.2s; }
+        .product-link:hover svg { transform: translateX(3px); }
+
+        /* product visual cards */
+        .mini-card {
+            background: #fff; border-radius: 16px;
+            box-shadow: 0 18px 44px -18px rgba(22, 19, 14, 0.22);
+            padding: 22px 24px; width: min(320px, 100%);
+        }
+        .mini-card .mc-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 9px 0; border-bottom: 1px solid #F0EBE1;
+            font-size: 0.86rem;
+        }
+        .mini-card .mc-row:last-child { border-bottom: none; }
+        .mini-card .mc-row .ok { font-weight: 700; }
+        .product.seva .mc-row .ok { color: var(--seva); }
+        .product.law .mc-row .ok { color: var(--law); }
+        .mini-card .mc-title {
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px;
+        }
+        .glyph {
+            position: absolute; font-family: 'Fraunces', Georgia, serif;
+            font-size: 15rem; line-height: 1; opacity: 0.07; user-select: none;
+            right: -28px; bottom: -46px; pointer-events: none;
         }
 
-        .product-link:hover {
-            gap: 0.75rem;
+        /* ---------- Principles ---------- */
+        .principles { border-bottom: 1px solid var(--line); background: var(--paper-deep); }
+        .principles-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
         }
-
-        /* About Section */
-        .about {
-            padding: 6rem 5%;
-            background: #fafafa;
+        .principle {
+            background: #fff; border: 1px solid var(--line);
+            border-radius: var(--radius); padding: 34px 30px;
         }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
+        .principle .num {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 0.95rem; font-weight: 600; color: var(--accent);
+            margin-bottom: 16px; display: block;
         }
-
-        .about h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
+        .principle h3 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.25rem; font-weight: 600; margin-bottom: 10px;
         }
+        .principle p { color: var(--ink-soft); font-size: 0.94rem; }
 
-        .about p {
-            color: #64748b;
-            font-size: 1.125rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
+        /* ---------- About ---------- */
+        .about-grid {
+            display: grid; grid-template-columns: 5fr 4fr; gap: 72px; align-items: start;
         }
-
-        /* Stats */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-            padding-top: 3rem;
-            border-top: 1px solid #e2e8f0;
+        .about-grid h2 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+            font-weight: 500; letter-spacing: -0.015em; line-height: 1.15;
+            margin: 14px 0 22px;
         }
-
-        .stat {
-            text-align: center;
+        .about-grid .lede { font-size: 1.08rem; color: var(--ink-soft); margin-bottom: 18px; line-height: 1.75; }
+        .about-facts { display: grid; gap: 18px; }
+        .fact {
+            border: 1px solid var(--line); border-radius: 16px;
+            padding: 24px 26px; background: #fff;
         }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .fact strong {
+            display: block; font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.5rem; font-weight: 600; margin-bottom: 4px;
         }
+        .fact span { color: var(--ink-faint); font-size: 0.9rem; }
 
-        .stat-label {
-            color: #64748b;
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
+        /* ---------- Contact ---------- */
+        .contact-band {
+            background: var(--ink); color: var(--paper);
+            border-radius: calc(var(--radius) + 6px);
+            padding: 72px 56px; text-align: center;
         }
-
-        /* Contact Section */
-        .contact {
-            padding: 6rem 5%;
-            background: #ffffff;
+        .contact-band h2 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(1.9rem, 3.8vw, 2.8rem);
+            font-weight: 500; letter-spacing: -0.015em;
+            margin-bottom: 16px;
         }
-
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
+        .contact-band h2 em { font-style: italic; color: #E8955C; }
+        .contact-band p {
+            color: #B8AF9D; max-width: 46ch; margin: 0 auto 34px;
         }
+        .btn-paper { background: var(--paper); color: var(--ink); }
+        .btn-paper:hover { background: #fff; transform: translateY(-1px); }
 
-        .contact h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+        /* ---------- Footer ---------- */
+        footer { padding: 52px 0 44px; }
+        .footer-inner {
+            display: flex; justify-content: space-between; align-items: center;
+            gap: 24px; flex-wrap: wrap;
         }
-
-        .contact p {
-            color: #64748b;
-            margin-bottom: 2rem;
-        }
-
-        .contact-email {
-            font-size: 1.25rem;
-            color: #6366f1;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .contact-email:hover {
-            text-decoration: underline;
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem 5%;
-            background: #1a1a2e;
-            color: #94a3b8;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 1.5rem 0;
-            flex-wrap: wrap;
-        }
-
+        .footer-links { display: flex; gap: 26px; list-style: none; flex-wrap: wrap; }
         .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: color 0.3s;
+            color: var(--ink-faint); text-decoration: none; font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--ink); }
+        .copyright { color: var(--ink-faint); font-size: 0.85rem; }
+
+        /* ---------- Reveal ---------- */
+        .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.in { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
         }
 
-        .footer-links a:hover {
-            color: white;
+        /* ---------- Responsive ---------- */
+        @media (max-width: 900px) {
+            .product { grid-template-columns: 1fr; }
+            .product-visual { min-height: 260px; order: -1; }
+            .principles-grid { grid-template-columns: 1fr; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
         }
-
-        .copyright {
-            font-size: 0.875rem;
-            margin-top: 1.5rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding-top: 6rem;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 640px) {
+            .nav-links li:not(.keep) { display: none; }
+            .hero { padding: 140px 0 72px; }
+            section { padding: 72px 0; }
+            .product-body { padding: 36px 26px; }
+            .contact-band { padding: 52px 26px; }
+            .hero-meta { gap: 26px; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+
     <nav>
-        <a href="#" class="logo">
-            <span class="logo-icon">P</span>
-            Partwigo Labs
-        </a>
-        <ul class="nav-links">
-            <li><a href="#products">Products</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="nav-inner">
+            <a href="#top" class="logo"><span class="logo-mark">P</span>Partwigo Labs</a>
+            <ul class="nav-links">
+                <li><a href="#products">Products</a></li>
+                <li><a href="#approach">Approach</a></li>
+                <li><a href="#about">About</a></li>
+                <li class="keep"><a href="#contact" class="nav-cta">Get in touch</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <span class="hero-badge">🚀 Building the Future of AI</span>
-        <h1>Empowering Creativity & Productivity with <span>AI-Powered Tools</span></h1>
-        <p>Partwigo Labs builds intelligent solutions that transform how professionals create, write, and work. From scripts to legal documents, we're making AI accessible.</p>
-        <div class="hero-buttons">
-            <a href="#products" class="btn btn-primary">
-                Explore Products
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
-            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="products" id="products">
-        <div class="section-header">
-            <h2>Our Products</h2>
-            <p>AI-powered solutions designed to help professionals do their best work</p>
-        </div>
-        <div class="products-grid">
-            <!-- ScriptCentral AI -->
-            <div class="product-card scriptcentral">
-                <div class="product-icon">🎬</div>
-                <h3>ScriptCentral AI</h3>
-                <p class="tagline">scriptcentral.ai</p>
-                <p>Draft, structure, and polish scripts with AI — for screenplays, YouTube videos, ads, podcasts, and more. Your AI writing partner for all creative content.</p>
-                <ul class="product-features">
-                    <li>Screenplay & film script generation</li>
-                    <li>YouTube video scripts</li>
-                    <li>Ad copy & marketing scripts</li>
-                    <li>Podcast outlines & show notes</li>
-                    <li>Story structure assistance</li>
-                </ul>
-                <a href="https://scriptcentral.ai" class="product-link" target="_blank">
-                    Visit ScriptCentral AI
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
+    <!-- Hero -->
+    <header class="hero" id="top">
+        <div class="wrap">
+            <span class="eyebrow">A product studio, Made in India</span>
+            <h1 class="serif">We build AI products for the people who <em>run India</em>.</h1>
+            <p class="hero-sub">Partwigo Labs designs and ships software for professionals the big platforms overlook — the shop owner sending her first GST invoice, the advocate preparing tomorrow's hearing. Serious tools, priced for real businesses, built for Indian languages, courts, and rails like UPI.</p>
+            <div class="hero-actions">
+                <a href="#products" class="btn btn-dark">
+                    See our products
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
+                <a href="#about" class="btn btn-ghost">About the studio</a>
             </div>
+            <div class="hero-meta">
+                <div><strong>2</strong><span>Products in market</span></div>
+                <div><strong>6+</strong><span>Indian languages supported</span></div>
+                <div><strong>0%</strong><span>Commission on customer orders</span></div>
+                <div><strong>🇮🇳</strong><span>Designed &amp; built in India</span></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products -->
+    <section class="products" id="products">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="eyebrow">What we make</span>
+                <h2>Two products. One idea: software that earns its keep.</h2>
+                <p>Each product runs an entire workflow end to end — not a feature, a livelihood.</p>
+            </div>
+
+            <!-- SevaSangam -->
+            <article class="product seva reveal">
+                <div class="product-body">
+                    <span class="product-tag">For small businesses</span>
+                    <h3>SevaSangam</h3>
+                    <p class="domain">sevasangam.com</p>
+                    <p class="desc">The business management app for India's shops, service pros, and repair teams. A customer opens your link and orders — SevaSangam turns it into a job, a GST invoice, and money in your bank. You deliver; it runs the paperwork.</p>
+                    <ul class="feature-list">
+                        <li>Your own ordering page &amp; shop link — 0% commission</li>
+                        <li>GST-ready invoices with UPI QR, paid in seconds</li>
+                        <li>Asha, an AI receptionist that replies in your customer's language</li>
+                        <li>Jobs, scheduling &amp; field teams with route optimisation</li>
+                        <li>Works in English, हिन्दी, मराठी, தமிழ், తెలుగు and more</li>
+                    </ul>
+                    <a href="https://sevasangam.com" class="product-link" target="_blank" rel="noopener">
+                        Visit SevaSangam
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <div class="product-visual">
+                    <span class="glyph">सं</span>
+                    <div class="mini-card">
+                        <div class="mc-title">Today · Order to paid</div>
+                        <div class="mc-row"><span>Order from shop link</span><span class="ok">10:14 AM</span></div>
+                        <div class="mc-row"><span>Job accepted → on the way</span><span class="ok">12:48 PM</span></div>
+                        <div class="mc-row"><span>GST invoice + UPI QR sent</span><span class="ok">12:50 PM</span></div>
+                        <div class="mc-row"><span>₹1,888 in bank</span><span class="ok">Paid ✓</span></div>
+                    </div>
+                </div>
+            </article>
 
             <!-- LawCentral AI -->
-            <div class="product-card lawcentral">
-                <div class="product-icon">⚖️</div>
-                <h3>LawCentral AI</h3>
-                <p class="tagline">lawcentral.ai</p>
-                <p>AI-powered legal document assistance for professionals. Streamline legal research, document drafting, and case analysis with intelligent automation.</p>
-                <ul class="product-features">
-                    <li>Legal document drafting</li>
-                    <li>Contract analysis & review</li>
-                    <li>Legal research assistance</li>
-                    <li>Case law summarization</li>
-                    <li>Compliance checking</li>
-                </ul>
-                <a href="https://lawcentral.ai" class="product-link" target="_blank">
-                    Visit LawCentral AI
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
+            <article class="product law reveal">
+                <div class="product-body">
+                    <span class="product-tag">For legal professionals</span>
+                    <h3>LawCentral AI</h3>
+                    <p class="domain">lawcentral.ai</p>
+                    <p class="desc">An AI-powered legal workspace built for Indian practice. Case management, court-aware research, and drafting live in one place — grounded in Indian statutes, case law, and the way real chambers work.</p>
+                    <ul class="feature-list">
+                        <li>Case files synced with Indian court records</li>
+                        <li>AI legal research across statutes &amp; judgments, with citations</li>
+                        <li>Drafting workspace for petitions, notices &amp; contracts</li>
+                        <li>Cause lists, hearing diaries &amp; timelines in one view</li>
+                        <li>GST-compliant invoicing for your practice</li>
+                    </ul>
+                    <a href="https://lawcentral.ai" class="product-link" target="_blank" rel="noopener">
+                        Visit LawCentral AI
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <div class="product-visual">
+                    <span class="glyph">§</span>
+                    <div class="mini-card">
+                        <div class="mc-title">Chamber · This morning</div>
+                        <div class="mc-row"><span>Cause list scanned</span><span class="ok">3 matters</span></div>
+                        <div class="mc-row"><span>Research memo drafted</span><span class="ok">12 citations</span></div>
+                        <div class="mc-row"><span>Reply petition v3</span><span class="ok">Ready ✓</span></div>
+                        <div class="mc-row"><span>Hearing at 2:30 PM</span><span class="ok">Court 14</span></div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Approach -->
+    <section class="principles" id="approach">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="eyebrow">How we build</span>
+                <h2>AI that does the work, not just the demo.</h2>
+            </div>
+            <div class="principles-grid">
+                <div class="principle reveal">
+                    <span class="num">01</span>
+                    <h3>Built for Bharat, not ported to it</h3>
+                    <p>UPI, GST, Indian courts, Indian languages — our products start from how India actually works, instead of translating software made for somewhere else.</p>
+                </div>
+                <div class="principle reveal">
+                    <span class="num">02</span>
+                    <h3>The whole workflow, end to end</h3>
+                    <p>An order becomes an invoice becomes money in the bank. A case file becomes research becomes a filed draft. We ship complete loops, not point features.</p>
+                </div>
+                <div class="principle reveal">
+                    <span class="num">03</span>
+                    <h3>AI with receipts</h3>
+                    <p>Legal answers carry citations. Invoices carry HSN codes. When software acts on your behalf, it should show its work — ours does.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="wrap">
+            <div class="about-grid">
+                <div class="reveal">
+                    <span class="eyebrow">The studio</span>
+                    <h2>Small team. Sharp products. Long game.</h2>
+                    <p class="lede">Partwigo Labs is a product studio of engineers and designers who believe the most interesting AI companies will be built for the hundreds of millions of professionals working outside Silicon Valley's field of view.</p>
+                    <p class="lede">We build each product the same way: live inside the problem, ship fast, talk to users daily, and let AI carry the drudgery so people can do the work only they can do.</p>
+                </div>
+                <div class="about-facts">
+                    <div class="fact reveal"><strong>Product-led</strong><span>We build and operate our own products, end to end</span></div>
+                    <div class="fact reveal"><strong>AI-native</strong><span>Language models are in the core loop, not bolted on</span></div>
+                    <div class="fact reveal"><strong>India-first</strong><span>Languages, payments &amp; law of the world's largest market</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" style="padding-top: 0;">
+        <div class="wrap">
+            <div class="contact-band reveal">
+                <h2>Building something for India? <em>Talk to us.</em></h2>
+                <p>Partnerships, press, or a problem you think we should be solving — we read everything.</p>
+                <a href="mailto:hello@partwigolabs.com" class="btn btn-paper">
+                    hello@partwigolabs.com
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-content">
-            <h2>About Partwigo Labs</h2>
-            <p>We're a team of engineers, designers, and AI enthusiasts passionate about building tools that amplify human creativity and productivity. Our mission is to make advanced AI accessible to professionals across industries.</p>
-            <p>Founded with the belief that AI should enhance—not replace—human expertise, we create solutions that help you work smarter, faster, and more creatively.</p>
-            <div class="stats">
-                <div class="stat">
-                    <div class="stat-number">2</div>
-                    <div class="stat-label">AI Products</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">AI Availability</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">Possibilities</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="contact-content">
-            <h2>Let's Connect</h2>
-            <p>Have questions or want to learn more about our products? We'd love to hear from you.</p>
-            <a href="mailto:contact@scriptcentral.ai" class="contact-email">contact@scriptcentral.ai</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <div class="footer-logo">Partwigo Labs</div>
-        <div class="footer-links">
-            <a href="https://scriptcentral.ai" target="_blank">ScriptCentral AI</a>
-            <a href="https://lawcentral.ai" target="_blank">LawCentral AI</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+        <div class="wrap footer-inner">
+            <a href="#top" class="logo"><span class="logo-mark">P</span>Partwigo Labs</a>
+            <ul class="footer-links">
+                <li><a href="https://sevasangam.com" target="_blank" rel="noopener">SevaSangam</a></li>
+                <li><a href="https://lawcentral.ai" target="_blank" rel="noopener">LawCentral AI</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <p class="copyright">© 2026 Partwigo Labs. All rights reserved.</p>
         </div>
-        <p class="copyright">© 2025 Partwigo Labs. All rights reserved.</p>
     </footer>
 
     <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
             });
-        });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     </script>
 </body>
 </html>
